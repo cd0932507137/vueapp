@@ -1,14 +1,15 @@
 <template>
   <div>
-    <h1>test</h1>
-    <p>{{ title }}</p>
+    <input type="text" v-model="title">
+    <br/>
+    <h1>{{ title }}</h1>
     <span v-if="showName">{{ user.firstName }}</span>
     <ul>
       <li v-for="item in items">{{ item.label }}</li>
     </ul>
     <button v-on:click="greet('Hello World')">greet</button>
     <br/>
-    <input type="text" v-on:keyup="pressKey">
+    <input type="text" v-on:keyup="pressKey" v-on:keyup.enter="enterHit">
   </div>
 </template>
 <script>
@@ -40,7 +41,8 @@ export default {
   },
   methods: {
     greet: greeting => alert(greeting),
-    pressKey: e => console.log(e.target.value)
+    pressKey: e => console.log(e.target.value),
+    enterHit: () => console.log('你點擊Enter')
   },
   computed: {
     // 收納 template 邏輯，即時更動資料就靠它
