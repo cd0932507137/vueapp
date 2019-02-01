@@ -10,6 +10,11 @@
     <button v-on:click="greet('Hello World')">greet</button>
     <br/>
     <input type="text" v-on:keyup="pressKey" v-on:keyup.enter="enterHit">
+    <hr />
+    <label>First Name:</label><input type="text" v-model="user.firstName">
+    <br />
+    <label>Last Name:</label><input type="text" v-model="user.lastName">
+    <h3>{{ fullName }}</h3>
   </div>
 </template>
 <script>
@@ -44,8 +49,11 @@ export default {
     pressKey: e => console.log(e.target.value),
     enterHit: () => console.log('你點擊Enter')
   },
+  // 收納 template 邏輯，即時更動資料就靠它
   computed: {
-    // 收納 template 邏輯，即時更動資料就靠它
+    fullName: function () {
+      return this.user.firstName + '' + this.user.lastName
+    }
   }
 };
 </script>
