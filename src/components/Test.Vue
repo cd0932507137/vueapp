@@ -15,11 +15,18 @@
     <br />
     <label>Last Name:</label><input type="text" v-model="user.lastName">
     <h3>{{ fullName }}</h3>
+    {{ msg }}
   </div>
 </template>
 <script>
 export default {
   name: "test",
+  props: {
+    msg: {
+      type: String,
+      default: 'Foobar'
+    }
+  },
   data() {
     return {
       title: "Hi Hi Josh",
