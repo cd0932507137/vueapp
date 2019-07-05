@@ -11,7 +11,7 @@
         </b-form-group>
     </b-form>
     <ul>
-      <li v-for="user in users">
+      <li v-for="user in users"  :key="user.id">
         <b-form-checkbox type="checkbox" class="toggle" v-model="user.contacted"></b-form-checkbox>
         <span :class="{contacted: user.contacted}">
           {{ user.name }}: {{ user.email }}
@@ -25,12 +25,12 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 export default {
-  name: "users",
-  data() {
+  name: 'users',
+  data () {
     return {
       newUser: {},
       users: []
-    };
+    }
   },
   methods: {
     addUser: e => {
@@ -38,21 +38,21 @@ export default {
         name: this.newUser.name,
         email: this.newUser.email,
         contacted: false
-      });
-      e.preventDefault();
+      })
+      e.preventDefault()
     },
-    deleteUser: function(user) {
-      this.users.splice(this.users.indexOf(user), 1);
+    deleteUser: function (user) {
+      this.users.splice(this.users.indexOf(user), 1)
     }
   },
-  created: function() {
+  created: function () {
     this.$http
-      .get("https://jsonplaceholder.typicode.com/users")
-      .then(function(response) {
-        this.users = response.data;
-      });
+      .get('https://jsonplaceholder.typicode.com/users')
+      .then(function (response) {
+        this.users = response.data
+      })
   }
-};
+}
 </script>
 <style scoped>
 .contacted {

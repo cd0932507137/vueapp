@@ -5,7 +5,7 @@
     <h1>{{ title }}</h1>
     <span v-if="showName">{{ user.firstName }}</span>
     <ul>
-      <li v-for="item in items">{{ item.label }}</li>
+      <li v-for="item in items" :key="item.label">{{ item.label }}</li>
     </ul>
     <button v-on:click="greet('Hello World')">greet</button>
     <br/>
@@ -20,36 +20,36 @@
 </template>
 <script>
 export default {
-  name: "test",
+  name: 'test',
   props: {
     msg: {
       type: String,
       default: 'Foobar'
     }
   },
-  data() {
+  data () {
     return {
-      title: "Hi Hi Josh",
+      title: 'Hi Hi Josh',
       user: {
-        firstName: "Tommy",
-        lastName: "Chen"
+        firstName: 'Tommy',
+        lastName: 'Chen'
       },
       showName: true,
       items: [
         {
-          label: "Apple"
+          label: 'Apple'
         },
         {
-          label: "LG"
+          label: 'LG'
         },
         {
-          label: "Samsung"
+          label: 'Samsung'
         },
         {
-          label: "小米"
+          label: '小米'
         }
       ]
-    };
+    }
   },
   methods: {
     greet: greeting => alert(greeting),
@@ -62,7 +62,7 @@ export default {
       return this.user.firstName + '' + this.user.lastName
     }
   }
-};
+}
 </script>
 <style scoped>
 </style>
